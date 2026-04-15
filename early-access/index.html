@@ -88,19 +88,35 @@
       margin-top: 8px;
     }
 
-    /* Ensure embed fits */
     .waitlist-embed iframe,
     .waitlist-embed div {
       width: 100% !important;
     }
 
-    /* 🔑 THIS IS THE FIX — remove ONLY duplicate headline */
+    /* =========================
+       🔑 REAL FIX — CLEAN WIDGET
+       ========================= */
+
+    /* Remove duplicate headline block */
     #getWaitlistContainer > div > div:first-child {
       display: none !important;
     }
 
-    /* Keep skyline intact */
-    /* (No image suppression rules anymore) */
+    /* Remove "Check your status" */
+    #getWaitlistContainer a {
+      display: none !important;
+    }
+
+    /* Remove "Widget by getwaitlist.com" */
+    #getWaitlistContainer small,
+    #getWaitlistContainer p:last-child {
+      display: none !important;
+    }
+
+    /* Ensure skyline + logo remain */
+    #getWaitlistContainer img {
+      display: block !important;
+    }
 
     /* Clean spacing */
     #getWaitlistContainer {
@@ -109,7 +125,7 @@
       padding: 0 !important;
     }
 
-    /* Improve usability */
+    /* Improve input feel */
     #getWaitlistContainer input,
     #getWaitlistContainer select {
       min-height: 46px !important;
@@ -127,7 +143,6 @@
 
       h1 {
         font-size: 18px;
-        margin-bottom: 18px;
       }
     }
   </style>
