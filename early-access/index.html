@@ -31,8 +31,13 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
@@ -41,6 +46,8 @@
       justify-content: center;
       min-height: 100vh;
       padding: 32px 20px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     .container {
@@ -70,29 +77,64 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       font-size: 14px;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .body {
-      padding: 34px 28px 30px;
+      padding: 34px 28px 24px;
       text-align: center;
     }
 
     h1 {
       font-size: 22px;
-      line-height: 1.45;
+      line-height: 1.4;
       font-weight: 700;
-      margin: 0 0 28px;
+      margin: 0 0 20px;
       letter-spacing: -0.02em;
     }
 
     .waitlist-embed {
       width: 100%;
-      margin-top: 10px;
+      margin-top: 0;
     }
 
+    /* Keep embed width controlled */
     .waitlist-embed iframe,
     .waitlist-embed div {
       width: 100% !important;
+    }
+
+    /* Remove duplicate branding and duplicate heading inside Waitlist widget */
+    #getWaitlistContainer h1,
+    #getWaitlistContainer h2,
+    #getWaitlistContainer img {
+      display: none !important;
+    }
+
+    /* Make embedded form feel native to the page */
+    #getWaitlistContainer {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+
+    /* Improve field usability and perceived quality */
+    #getWaitlistContainer input,
+    #getWaitlistContainer select {
+      min-height: 46px !important;
+    }
+
+    /* Sharpen CTA behaviour without adding visual noise */
+    #getWaitlistContainer button,
+    #getWaitlistContainer [type="submit"] {
+      box-shadow: none !important;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    #getWaitlistContainer button:hover,
+    #getWaitlistContainer [type="submit"]:hover {
+      opacity: 0.92;
     }
 
     @media (max-width: 640px) {
@@ -107,6 +149,13 @@
 
       h1 {
         font-size: 18px;
+        line-height: 1.45;
+        margin-bottom: 18px;
+      }
+
+      .logo {
+        font-size: 13px;
+        padding: 10px 20px;
       }
     }
   </style>
