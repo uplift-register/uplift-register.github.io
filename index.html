@@ -4,11 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Uplift Register</title>
-  <meta http-equiv="refresh" content="0; url=/early-access/" />
+
+  <!-- SEO / canonical -->
   <link rel="canonical" href="https://upliftregister.ai/early-access/" />
+
+  <!-- Instant redirect -->
+  <meta http-equiv="refresh" content="0; url=/early-access/" />
+
   <script>
-    window.location.replace("/early-access/");
+    // Hard redirect fallback (more reliable than meta alone)
+    window.location.href = "/early-access/";
   </script>
+
   <style>
     body {
       margin: 0;
@@ -22,9 +29,11 @@
       padding: 24px;
       text-align: center;
     }
+
     .wrap {
       max-width: 520px;
     }
+
     .logo {
       display: inline-block;
       padding: 12px 24px;
@@ -35,20 +44,28 @@
       text-transform: uppercase;
       margin-bottom: 20px;
     }
+
     p {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
       margin: 0;
+      opacity: 0.75;
     }
+
     a {
       color: #111;
+      text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <div class="logo">UPLIFT REGISTER</div>
-    <p>Redirecting to Early Access. <a href="/early-access/">Continue</a></p>
+    <p>
+      Redirecting to Early Access…<br />
+      <a href="/early-access/">Click here if not redirected</a>
+    </p>
   </div>
 </body>
 </html>
