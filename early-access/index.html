@@ -86,7 +86,7 @@
 
     .waitlist-embed {
       width: 100%;
-      margin-top: 0;
+      margin-top: 8px;
     }
 
     /* Ensure embed expands properly */
@@ -95,19 +95,16 @@
       width: 100% !important;
     }
 
-    /* Keep widget integration clean */
-    #getWaitlistContainer {
-      margin: 0 !important;
-      padding: 0 !important;
-      background: transparent !important;
+    /* Remove duplicated inner branding block ONLY */
+    #getWaitlistContainer > div > div:first-child {
+      display: none !important;
     }
 
-    /* Hide duplicated visual branding only, not the whole widget header structure */
-    #getWaitlistContainer img,
-    #getWaitlistContainer svg,
-    #getWaitlistContainer [class*="logo"],
-    #getWaitlistContainer [class*="brand"] {
-      display: none !important;
+    /* Keep embed visually clean */
+    #getWaitlistContainer {
+      background: transparent !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     /* Improve field usability */
@@ -149,6 +146,7 @@
 <body>
   <div class="container">
     <div class="card">
+
       <div class="top">
         <div class="logo">UPLIFT REGISTER</div>
       </div>
@@ -163,6 +161,7 @@
           <div id="getWaitlistContainer" data-waitlist_id="32739" data-widget_type="WIDGET_1"></div>
         </div>
       </div>
+
     </div>
   </div>
 
