@@ -10,7 +10,6 @@
     content="Access Development Opportunities Before the Market powered by Institutional-Grade Intelligence Across London & the South East."
   />
 
-  <!-- Waitlist CSS -->
   <link
     rel="stylesheet"
     href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css"
@@ -90,25 +89,28 @@
       margin-top: 0;
     }
 
-    /* Ensure full width embed */
+    /* Ensure embed expands properly */
     .waitlist-embed iframe,
     .waitlist-embed div {
       width: 100% !important;
     }
 
-    /* 🔥 KEY FIX: Remove duplicated widget header block */
-    #getWaitlistContainer > div > div:first-child {
-      display: none !important;
-    }
-
-    /* Clean integration */
+    /* Keep widget integration clean */
     #getWaitlistContainer {
       margin: 0 !important;
       padding: 0 !important;
       background: transparent !important;
     }
 
-    /* Improve usability */
+    /* Hide duplicated visual branding only, not the whole widget header structure */
+    #getWaitlistContainer img,
+    #getWaitlistContainer svg,
+    #getWaitlistContainer [class*="logo"],
+    #getWaitlistContainer [class*="brand"] {
+      display: none !important;
+    }
+
+    /* Improve field usability */
     #getWaitlistContainer input,
     #getWaitlistContainer select {
       min-height: 46px !important;
@@ -147,7 +149,6 @@
 <body>
   <div class="container">
     <div class="card">
-
       <div class="top">
         <div class="logo">UPLIFT REGISTER</div>
       </div>
@@ -162,11 +163,9 @@
           <div id="getWaitlistContainer" data-waitlist_id="32739" data-widget_type="WIDGET_1"></div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- Waitlist JS -->
   <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>
 </body>
 </html>
