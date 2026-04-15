@@ -10,161 +10,65 @@
     content="Access Development Opportunities Before the Market powered by Institutional-Grade Intelligence Across London & the South East."
   />
 
+  <!-- Waitlist CSS -->
   <link
     rel="stylesheet"
     href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css"
   />
 
   <style>
-    :root {
-      --bg: #f5f5f5;
-      --panel: #ffffff;
-      --text: #111111;
-      --shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
-      --radius: 18px;
-      --max-width: 640px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
+      background: #f5f5f5;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
       display: flex;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      padding: 32px 20px;
-      -webkit-font-smoothing: antialiased;
+      padding: 24px;
     }
 
-    .container {
+    .wrapper {
       width: 100%;
-      max-width: var(--max-width);
+      max-width: 640px;
     }
 
-    .card {
-      background: var(--panel);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .top {
-      background: #fafafa;
-      padding: 28px 24px 18px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .logo {
-      border: 1.5px solid #111;
-      border-radius: 12px;
-      padding: 10px 26px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-
-    .body {
-      padding: 34px 28px 24px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 22px;
-      line-height: 1.4;
-      font-weight: 700;
-      margin: 0 0 20px;
-      letter-spacing: -0.02em;
-    }
-
-    .waitlist-embed {
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    /* Ensure embed expands properly */
-    .waitlist-embed iframe,
-    .waitlist-embed div {
-      width: 100% !important;
-    }
-
-    /* Remove duplicated inner branding block ONLY */
-    #getWaitlistContainer > div > div:first-child {
-      display: none !important;
-    }
-
-    /* Keep embed visually clean */
+    /* Clean embed only */
     #getWaitlistContainer {
-      background: transparent !important;
-      margin: 0 !important;
-      padding: 0 !important;
+      width: 100%;
     }
 
-    /* Improve field usability */
+    /* Remove outer framing look */
+    #getWaitlistContainer > div {
+      border-radius: 18px !important;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.05) !important;
+      overflow: hidden !important;
+    }
+
+    /* Improve spacing */
     #getWaitlistContainer input,
     #getWaitlistContainer select {
       min-height: 46px !important;
     }
 
-    /* Refine CTA feel */
-    #getWaitlistContainer button,
-    #getWaitlistContainer [type="submit"] {
-      box-shadow: none !important;
+    /* Button polish */
+    #getWaitlistContainer button {
       transition: opacity 0.15s ease;
     }
 
-    #getWaitlistContainer button:hover,
-    #getWaitlistContainer [type="submit"]:hover {
+    #getWaitlistContainer button:hover {
       opacity: 0.92;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 20px 14px;
-        align-items: flex-start;
-      }
-
-      .body {
-        padding: 26px 18px 22px;
-      }
-
-      h1 {
-        font-size: 18px;
-        margin-bottom: 18px;
-      }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="card">
 
-      <div class="top">
-        <div class="logo">UPLIFT REGISTER</div>
-      </div>
-
-      <div class="body">
-        <h1>
-          Access Development Opportunities Before the Market<br>
-          Powered by Institutional-Grade Intelligence Across London &amp; the South East
-        </h1>
-
-        <div class="waitlist-embed">
-          <div id="getWaitlistContainer" data-waitlist_id="32739" data-widget_type="WIDGET_1"></div>
-        </div>
-      </div>
-
-    </div>
+  <div class="wrapper">
+    <div id="getWaitlistContainer" data-waitlist_id="32739" data-widget_type="WIDGET_1"></div>
   </div>
 
   <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>
+
 </body>
 </html>
