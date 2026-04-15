@@ -39,7 +39,6 @@
       justify-content: center;
       min-height: 100vh;
       padding: 32px 20px;
-      -webkit-font-smoothing: antialiased;
     }
 
     .container {
@@ -89,47 +88,31 @@
       margin-top: 8px;
     }
 
-    /* Ensure embed expands properly */
+    /* Ensure embed fits */
     .waitlist-embed iframe,
     .waitlist-embed div {
       width: 100% !important;
     }
 
-    /* Remove widget skyline / logo */
-    #getWaitlistContainer img,
-    #getWaitlistContainer svg {
+    /* 🔑 THIS IS THE FIX — remove ONLY duplicate headline */
+    #getWaitlistContainer > div > div:first-child {
       display: none !important;
     }
 
-    /* Remove duplicate widget headline */
-    #getWaitlistContainer h1,
-    #getWaitlistContainer h2 {
-      display: none !important;
-    }
+    /* Keep skyline intact */
+    /* (No image suppression rules anymore) */
 
-    /* Clean embed spacing */
+    /* Clean spacing */
     #getWaitlistContainer {
       background: transparent !important;
       margin: 0 !important;
       padding: 0 !important;
     }
 
-    /* Improve field usability */
+    /* Improve usability */
     #getWaitlistContainer input,
     #getWaitlistContainer select {
       min-height: 46px !important;
-    }
-
-    /* Refine CTA feel */
-    #getWaitlistContainer button,
-    #getWaitlistContainer [type="submit"] {
-      box-shadow: none !important;
-      transition: opacity 0.15s ease;
-    }
-
-    #getWaitlistContainer button:hover,
-    #getWaitlistContainer [type="submit"]:hover {
-      opacity: 0.92;
     }
 
     @media (max-width: 640px) {
