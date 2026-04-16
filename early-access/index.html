@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Uplift Register — Early Access</title>
 
   <meta
@@ -10,6 +11,7 @@
     content="Access Development Opportunities Before the Market. Powered by Institutional-Grade Intelligence Across London & the South East."
   />
 
+  <!-- Waitlist CSS -->
   <link
     rel="stylesheet"
     href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css"
@@ -35,7 +37,6 @@
       background: var(--bg);
       color: var(--text);
       display: flex;
-      align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 32px 20px;
@@ -53,96 +54,84 @@
       overflow: hidden;
     }
 
-    .top {
-      background: #fafafa;
-      padding: 28px 24px 18px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .logo {
-      border: 1.5px solid #111;
-      border-radius: 12px;
-      padding: 10px 26px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-
     .body {
-      padding: 34px 28px 24px;
+      padding: 28px 28px 26px;
       text-align: center;
     }
 
-    h1 {
+    /* TOP HEADLINE */
+    .headline-top {
       font-size: 22px;
-      line-height: 1.4;
       font-weight: 700;
-      margin: 0 0 20px;
+      line-height: 1.4;
       letter-spacing: -0.02em;
+      margin-bottom: 22px;
     }
 
+    /* WAITLIST EMBED CONTAINER */
     .waitlist-embed {
       width: 100%;
-      margin-top: 8px;
     }
 
+    /* FORCE CLEAN WIDTH + REMOVE THEIR OUTER CARD */
     .waitlist-embed iframe,
-    .waitlist-embed div {
+    .waitlist-embed > div {
       width: 100% !important;
+      max-width: 100% !important;
     }
 
-    #getWaitlistContainer {
+    /* 🔑 CRITICAL: REMOVE WAITLIST OUTER BOX (THIS FIXES YOUR ISSUE CLEANLY) */
+    #getWaitlistContainer > div {
       background: transparent !important;
-      margin: 0 !important;
+      box-shadow: none !important;
+      border: none !important;
       padding: 0 !important;
-    }
-
-    #getWaitlistContainer input,
-    #getWaitlistContainer select {
-      min-height: 46px !important;
     }
 
     @media (max-width: 640px) {
       body {
         padding: 20px 14px;
-        align-items: flex-start;
       }
 
       .body {
-        padding: 26px 18px 22px;
+        padding: 22px 18px;
       }
 
-      h1 {
+      .headline-top {
         font-size: 18px;
-        margin-bottom: 18px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <div class="container">
     <div class="card">
 
-      <div class="top">
-        <div class="logo">UPLIFT REGISTER</div>
-      </div>
-
       <div class="body">
-        <h1>
-          Access Development Opportunities Before the Market
-        </h1>
 
-        <div class="waitlist-embed">
-          <div id="getWaitlistContainer" data-waitlist_id="32739" data-widget_type="WIDGET_1"></div>
+        <!-- PART 1 -->
+        <div class="headline-top">
+          Access Development Opportunities Before the Market
         </div>
+
+        <!-- WAITLIST (includes skyline + logo + second heading) -->
+        <div class="waitlist-embed">
+          <div
+            id="getWaitlistContainer"
+            data-waitlist_id="32739"
+            data-widget_type="WIDGET_1">
+          </div>
+        </div>
+
       </div>
 
     </div>
   </div>
 
+  <!-- Waitlist Script -->
   <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>
+
 </body>
 </html>
