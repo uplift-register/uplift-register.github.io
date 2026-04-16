@@ -8,10 +8,9 @@
 
   <meta
     name="description"
-    content="Access Development Opportunities Before the Market. Powered by Institutional-Grade Intelligence Across London & the South East."
+    content="Access development opportunities before the market sees them. Powered by institutional-grade intelligence across London and the South East."
   />
 
-  <!-- Waitlist CSS -->
   <link
     rel="stylesheet"
     href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css"
@@ -40,6 +39,8 @@
       justify-content: center;
       min-height: 100vh;
       padding: 32px 20px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     .container {
@@ -59,7 +60,6 @@
       text-align: center;
     }
 
-    /* TOP HEADLINE */
     .headline-top {
       font-size: 22px;
       font-weight: 700;
@@ -68,7 +68,6 @@
       margin-bottom: 22px;
     }
 
-    /* WAITLIST EMBED */
     .waitlist-embed {
       width: 100%;
     }
@@ -79,7 +78,7 @@
       max-width: 100% !important;
     }
 
-    /* REMOVE OUTER WAITLIST CARD */
+    /* Remove outer Waitlist card styling so it sits cleanly in your shell */
     #getWaitlistContainer > div {
       background: transparent !important;
       box-shadow: none !important;
@@ -87,7 +86,7 @@
       padding: 0 !important;
     }
 
-    /* 🔧 HEADLINE REFINEMENT (your request) */
+    /* Tighten second headline inside widget */
     #getWaitlistContainer h1,
     #getWaitlistContainer h2 {
       font-size: 18px !important;
@@ -95,14 +94,16 @@
       line-height: 1.4 !important;
     }
 
-    /* 🔥 CTA TRUST LINE (injected cleanly after button) */
-    #getWaitlistContainer button::after {
+    /* CTA trust line */
+    #getWaitlistContainer button::after,
+    #getWaitlistContainer [type="submit"]::after {
       content: "Private early access — limited intake";
       display: block;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       margin-top: 10px;
-      color: #666;
+      color: #111111;
+      opacity: 0.65;
       letter-spacing: 0.01em;
     }
 
@@ -117,24 +118,26 @@
 
       .headline-top {
         font-size: 18px;
+        margin-bottom: 18px;
+      }
+
+      #getWaitlistContainer h1,
+      #getWaitlistContainer h2 {
+        font-size: 17px !important;
       }
     }
   </style>
 </head>
 
 <body>
-
   <div class="container">
     <div class="card">
-
       <div class="body">
 
-        <!-- PART 1 -->
         <div class="headline-top">
-          Access Development Opportunities Before the Market
+          Access Development Opportunities Before the Market Sees Them
         </div>
 
-        <!-- WAITLIST -->
         <div class="waitlist-embed">
           <div
             id="getWaitlistContainer"
@@ -144,12 +147,9 @@
         </div>
 
       </div>
-
     </div>
   </div>
 
-  <!-- Waitlist Script -->
   <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>
-
 </body>
 </html>
