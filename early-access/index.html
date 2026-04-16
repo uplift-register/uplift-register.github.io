@@ -186,32 +186,46 @@
   (function () {
     var CONVERSION_ID = 27058906;
     var STORAGE_KEY = "li_conv_27058906_fired";
-    var POLL_INTERVAL_MS = 1000;
-    var MAX_RUNTIME_MS = 30000;
+    var POLL_INTERVAL_MS = 500;
+    var MAX_RUNTIME_MS = 20 * 60 * 1000;
 
     var observer = null;
     var intervalId = null;
     var startedAt = Date.now();
-    var successLogged = false;
 
     function log(message) {
       console.log("[Uplift Register][LinkedIn Conversion] " + message);
     }
 
     function alreadyFired() {
-      return sessionStorage.getItem(STORAGE_KEY) === "1";
+      try {
+        return sessionStorage.getItem(STORAGE_KEY) === "1";
+      } catch (e) {
+        return false;
+      }
     }
 
     function markFired() {
-      sessionStorage.setItem(STORAGE_KEY, "1");
+      try {
+        sessionStorage.setItem(STORAGE_KEY, "1");
+      } catch (e) {}
     }
 
     function getBodyText() {
       return document.body ? (document.body.innerText || "") : "";
     }
 
+    function getContainerText() {
+      var container = document.getElementById("getWaitlistContainer");
+      return container ? (container.innerText || "") : "";
+    }
+
+    function getPageText() {
+      return getBodyText() + "\n" + getContainerText();
+    }
+
     function isSuccessStateVisible() {
-      var text = getBodyText();
+      var text = getPageText();
       return (
         text.indexOf("Access Request Received") !== -1 &&
         text.indexOf("Your Position") !== -1 &&
@@ -219,7 +233,7 @@
       );
     }
 
-    function cleanup() {
+    function cleanup(reason) {
       if (intervalId) {
         clearInterval(intervalId);
         intervalId = null;
@@ -228,44 +242,46 @@
         observer.disconnect();
         observer = null;
       }
+      if (reason) {
+        log(reason);
+      }
     }
 
     function fireLinkedInConversion() {
       if (alreadyFired()) {
-        log("already fired / skipped");
-        cleanup();
+        cleanup("already fired / skipped");
         return true;
       }
 
       if (typeof window.lintrk !== "function") {
-        log("success detected but lintrk not ready yet");
+        log("lintrk unavailable");
         return false;
       }
 
-      window.lintrk("track", { conversion_id: CONVERSION_ID });
-      markFired();
-      log("conversion fired: " + CONVERSION_ID);
-      cleanup();
-      return true;
+      try {
+        window.lintrk("track", { conversion_id: CONVERSION_ID });
+        markFired();
+        cleanup("conversion fired: " + CONVERSION_ID);
+        return true;
+      } catch (e) {
+        log("conversion fire error");
+        return false;
+      }
     }
 
-    function checkAndFire() {
+    function checkAndFire(source) {
       if (alreadyFired()) {
-        log("already fired / skipped");
-        cleanup();
+        cleanup("already fired / skipped");
         return true;
       }
 
       if (isSuccessStateVisible()) {
-        if (!successLogged) {
-          log("success state detected");
-          successLogged = true;
-        }
+        log("success state detected via " + source);
         return fireLinkedInConversion();
       }
 
       if (Date.now() - startedAt >= MAX_RUNTIME_MS) {
-        cleanup();
+        cleanup("max runtime reached without success state");
         return true;
       }
 
@@ -273,31 +289,47 @@
     }
 
     function startObserver() {
-      log("detector initialised");
-
-      checkAndFire();
-
-      intervalId = setInterval(function () {
-        checkAndFire();
-      }, POLL_INTERVAL_MS);
-
       observer = new MutationObserver(function () {
-        checkAndFire();
+        checkAndFire("mutation");
       });
 
-      if (document.body) {
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true,
-          characterData: true
-        });
-      }
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+    }
+
+    function startDetector() {
+      log("detector initialised");
+
+      checkAndFire("init");
+
+      intervalId = setInterval(function () {
+        checkAndFire("poll");
+      }, POLL_INTERVAL_MS);
+
+      startObserver();
+
+      window.addEventListener("load", function () {
+        checkAndFire("load");
+      });
+
+      window.addEventListener("pageshow", function () {
+        checkAndFire("pageshow");
+      });
+
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) {
+          checkAndFire("visibilitychange");
+        }
+      });
     }
 
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", startObserver);
+      document.addEventListener("DOMContentLoaded", startDetector);
     } else {
-      startObserver();
+      startDetector();
     }
   })();
   </script>
