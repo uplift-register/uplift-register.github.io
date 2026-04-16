@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Uplift Register — Early Access</title>
 
   <meta
     name="description"
-    content="Access off-market development opportunities before the market finds them. Powered by institutional-grade intelligence across London and the South East."
+    content="Access Development Opportunities Before the Market powered by Institutional-Grade Intelligence Across London & the South East."
   />
 
   <link
     rel="stylesheet"
+    type="text/css"
     href="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.css"
   />
 
@@ -21,6 +21,7 @@
       --bg: #f5f5f5;
       --panel: #ffffff;
       --text: #111111;
+      --border: #e2e2e2;
       --shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
       --radius: 18px;
       --max-width: 640px;
@@ -36,11 +37,10 @@
       background: var(--bg);
       color: var(--text);
       display: flex;
+      align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 32px 20px;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
     .container {
@@ -55,76 +55,58 @@
       overflow: hidden;
     }
 
+    .top {
+      background: #fafafa;
+      padding: 28px 24px 18px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo {
+      border: 1.5px solid #111;
+      border-radius: 12px;
+      padding: 10px 26px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
     .body {
-      padding: 28px 28px 26px;
+      padding: 34px 28px 30px;
       text-align: center;
     }
 
-    .headline-top {
+    h1 {
       font-size: 22px;
+      line-height: 1.45;
       font-weight: 700;
-      line-height: 1.4;
+      margin: 0 0 28px;
       letter-spacing: -0.02em;
-      margin-bottom: 22px;
     }
 
     .waitlist-embed {
       width: 100%;
+      margin-top: 10px;
     }
 
     .waitlist-embed iframe,
-    .waitlist-embed > div {
+    .waitlist-embed div {
       width: 100% !important;
-      max-width: 100% !important;
-    }
-
-    /* Remove outer Waitlist card */
-    #getWaitlistContainer > div {
-      background: transparent !important;
-      box-shadow: none !important;
-      border: none !important;
-      padding: 0 !important;
-    }
-
-    /* Control internal headings */
-    #getWaitlistContainer h1,
-    #getWaitlistContainer h2 {
-      font-size: 18px !important;
-      font-weight: 600 !important;
-      line-height: 1.4 !important;
-    }
-
-    /* CTA subtext */
-    #getWaitlistContainer button::after,
-    #getWaitlistContainer [type="submit"]::after {
-      content: "Private early access — limited intake";
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 10px;
-      color: #111111 !important;
-      opacity: 1 !important;
-      letter-spacing: 0.01em;
-      line-height: 1.3;
     }
 
     @media (max-width: 640px) {
       body {
         padding: 20px 14px;
+        align-items: flex-start;
       }
 
       .body {
-        padding: 22px 18px;
+        padding: 26px 18px 22px;
       }
 
-      .headline-top {
+      h1 {
         font-size: 18px;
-        margin-bottom: 18px;
-      }
-
-      #getWaitlistContainer h1,
-      #getWaitlistContainer h2 {
-        font-size: 17px !important;
       }
     }
   </style>
@@ -133,25 +115,46 @@
 <body>
   <div class="container">
     <div class="card">
-      <div class="body">
+      <div class="top">
+        <div class="logo">UPLIFT REGISTER</div>
+      </div>
 
-        <div class="headline-top">
-          Access Off-Market Development Opportunities<br>
-          Before the Market Finds Them
-        </div>
+      <div class="body">
+        <h1>
+          Access Development Opportunities Before the Market<br>
+          Powered by Institutional-Grade Intelligence Across London &amp; the South East
+        </h1>
 
         <div class="waitlist-embed">
-          <div
-            id="getWaitlistContainer"
-            data-waitlist_id="32739"
-            data-widget_type="WIDGET_1">
-          </div>
+          <div id="getWaitlistContainer" data-waitlist_id="32739" data-widget_type="WIDGET_1"></div>
         </div>
-
       </div>
     </div>
   </div>
 
   <script src="https://prod-waitlist-widget.s3.us-east-2.amazonaws.com/getwaitlist.min.js"></script>
+
+  <script type="text/javascript">
+    _linkedin_partner_id = "8997842";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script>
+  <script type="text/javascript">
+    (function(l) {
+      if (!l) {
+        window.lintrk = function(a, b) { window.lintrk.q.push([a, b]); };
+        window.lintrk.q = [];
+      }
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript";
+      b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=8997842&fmt=gif" />
+  </noscript>
 </body>
 </html>
