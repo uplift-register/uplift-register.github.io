@@ -68,24 +68,42 @@
       margin-bottom: 22px;
     }
 
-    /* WAITLIST EMBED CONTAINER */
+    /* WAITLIST EMBED */
     .waitlist-embed {
       width: 100%;
     }
 
-    /* FORCE CLEAN WIDTH + REMOVE THEIR OUTER CARD */
     .waitlist-embed iframe,
     .waitlist-embed > div {
       width: 100% !important;
       max-width: 100% !important;
     }
 
-    /* 🔑 CRITICAL: REMOVE WAITLIST OUTER BOX (THIS FIXES YOUR ISSUE CLEANLY) */
+    /* REMOVE OUTER WAITLIST CARD */
     #getWaitlistContainer > div {
       background: transparent !important;
       box-shadow: none !important;
       border: none !important;
       padding: 0 !important;
+    }
+
+    /* 🔧 HEADLINE REFINEMENT (your request) */
+    #getWaitlistContainer h1,
+    #getWaitlistContainer h2 {
+      font-size: 18px !important;
+      font-weight: 600 !important;
+      line-height: 1.4 !important;
+    }
+
+    /* 🔥 CTA TRUST LINE (injected cleanly after button) */
+    #getWaitlistContainer button::after {
+      content: "Private early access — limited intake";
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 10px;
+      color: #666;
+      letter-spacing: 0.01em;
     }
 
     @media (max-width: 640px) {
@@ -116,7 +134,7 @@
           Access Development Opportunities Before the Market
         </div>
 
-        <!-- WAITLIST (includes skyline + logo + second heading) -->
+        <!-- WAITLIST -->
         <div class="waitlist-embed">
           <div
             id="getWaitlistContainer"
