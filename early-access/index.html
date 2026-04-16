@@ -77,7 +77,6 @@
       max-width: 100% !important;
     }
 
-    /* Remove outer Waitlist card styling so widget sits cleanly inside your shell */
     #getWaitlistContainer > div {
       background: transparent !important;
       box-shadow: none !important;
@@ -85,7 +84,6 @@
       padding: 0 !important;
     }
 
-    /* Tighten internal widget headline */
     #getWaitlistContainer h1,
     #getWaitlistContainer h2 {
       font-size: 18px !important;
@@ -93,7 +91,6 @@
       line-height: 1.4 !important;
     }
 
-    /* CTA subtext */
     #getWaitlistContainer button::after,
     #getWaitlistContainer [type="submit"]::after {
       content: "Private early access — limited intake";
@@ -181,5 +178,63 @@
       src="https://px.ads.linkedin.com/collect/?pid=8997842&fmt=gif"
     />
   </noscript>
+
+  <script>
+  (function () {
+    var CONVERSION_ID = 27058906;
+    var STORAGE_KEY = "li_conv_27058906_fired";
+
+    function fireLinkedInConversion() {
+      if (sessionStorage.getItem(STORAGE_KEY)) return;
+      if (typeof window.lintrk !== "function") return;
+
+      window.lintrk("track", { conversion_id: CONVERSION_ID });
+      sessionStorage.setItem(STORAGE_KEY, "1");
+      console.log("LinkedIn conversion fired:", CONVERSION_ID);
+    }
+
+    function isSuccessStateVisible() {
+      var text = document.body ? document.body.innerText : "";
+      return (
+        text.indexOf("Access Request Received") !== -1 &&
+        text.indexOf("Your Position") !== -1 &&
+        text.indexOf("People on Waitlist") !== -1
+      );
+    }
+
+    function checkAndFire() {
+      if (isSuccessStateVisible()) {
+        fireLinkedInConversion();
+        return true;
+      }
+      return false;
+    }
+
+    function startObserver() {
+      if (checkAndFire()) return;
+
+      var observer = new MutationObserver(function () {
+        if (checkAndFire()) {
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+
+      setTimeout(function () {
+        observer.disconnect();
+      }, 30000);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", startObserver);
+    } else {
+      startObserver();
+    }
+  })();
+  </script>
 </body>
 </html>
