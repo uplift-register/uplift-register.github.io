@@ -77,6 +77,7 @@
       max-width: 100% !important;
     }
 
+    /* Remove outer Waitlist card styling so widget sits cleanly inside your shell */
     #getWaitlistContainer > div {
       background: transparent !important;
       box-shadow: none !important;
@@ -84,6 +85,7 @@
       padding: 0 !important;
     }
 
+    /* Tighten internal widget heading */
     #getWaitlistContainer h1,
     #getWaitlistContainer h2 {
       font-size: 18px !important;
@@ -91,6 +93,7 @@
       line-height: 1.4 !important;
     }
 
+    /* CTA microcopy */
     #getWaitlistContainer button::after,
     #getWaitlistContainer [type="submit"]::after {
       content: "Private early access — limited intake";
@@ -183,18 +186,32 @@
   (function () {
     var CONVERSION_ID = 27058906;
     var STORAGE_KEY = "li_conv_27058906_fired";
+    var POLL_INTERVAL_MS = 1000;
+    var MAX_RUNTIME_MS = 30000;
 
-    function fireLinkedInConversion() {
-      if (sessionStorage.getItem(STORAGE_KEY)) return;
-      if (typeof window.lintrk !== "function") return;
+    var observer = null;
+    var intervalId = null;
+    var startedAt = Date.now();
+    var successLogged = false;
 
-      window.lintrk("track", { conversion_id: CONVERSION_ID });
+    function log(message) {
+      console.log("[Uplift Register][LinkedIn Conversion] " + message);
+    }
+
+    function alreadyFired() {
+      return sessionStorage.getItem(STORAGE_KEY) === "1";
+    }
+
+    function markFired() {
       sessionStorage.setItem(STORAGE_KEY, "1");
-      console.log("LinkedIn conversion fired:", CONVERSION_ID);
+    }
+
+    function getBodyText() {
+      return document.body ? (document.body.innerText || "") : "";
     }
 
     function isSuccessStateVisible() {
-      var text = document.body ? document.body.innerText : "";
+      var text = getBodyText();
       return (
         text.indexOf("Access Request Received") !== -1 &&
         text.indexOf("Your Position") !== -1 &&
@@ -202,31 +219,79 @@
       );
     }
 
-    function checkAndFire() {
-      if (isSuccessStateVisible()) {
-        fireLinkedInConversion();
+    function cleanup() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+    }
+
+    function fireLinkedInConversion() {
+      if (alreadyFired()) {
+        log("already fired / skipped");
+        cleanup();
         return true;
       }
+
+      if (typeof window.lintrk !== "function") {
+        log("success detected but lintrk not ready yet");
+        return false;
+      }
+
+      window.lintrk("track", { conversion_id: CONVERSION_ID });
+      markFired();
+      log("conversion fired: " + CONVERSION_ID);
+      cleanup();
+      return true;
+    }
+
+    function checkAndFire() {
+      if (alreadyFired()) {
+        log("already fired / skipped");
+        cleanup();
+        return true;
+      }
+
+      if (isSuccessStateVisible()) {
+        if (!successLogged) {
+          log("success state detected");
+          successLogged = true;
+        }
+        return fireLinkedInConversion();
+      }
+
+      if (Date.now() - startedAt >= MAX_RUNTIME_MS) {
+        cleanup();
+        return true;
+      }
+
       return false;
     }
 
     function startObserver() {
-      if (checkAndFire()) return;
+      log("detector initialised");
 
-      var observer = new MutationObserver(function () {
-        if (checkAndFire()) {
-          observer.disconnect();
-        }
+      checkAndFire();
+
+      intervalId = setInterval(function () {
+        checkAndFire();
+      }, POLL_INTERVAL_MS);
+
+      observer = new MutationObserver(function () {
+        checkAndFire();
       });
 
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
-
-      setTimeout(function () {
-        observer.disconnect();
-      }, 30000);
+      if (document.body) {
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true
+        });
+      }
     }
 
     if (document.readyState === "loading") {
