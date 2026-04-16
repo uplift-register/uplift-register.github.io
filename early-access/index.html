@@ -78,7 +78,6 @@
       max-width: 100% !important;
     }
 
-    /* Remove outer Waitlist card styling so it sits cleanly in your shell */
     #getWaitlistContainer > div {
       background: transparent !important;
       box-shadow: none !important;
@@ -86,7 +85,6 @@
       padding: 0 !important;
     }
 
-    /* Tighten second headline inside widget */
     #getWaitlistContainer h1,
     #getWaitlistContainer h2 {
       font-size: 18px !important;
@@ -94,17 +92,17 @@
       line-height: 1.4 !important;
     }
 
-    /* CTA trust line */
     #getWaitlistContainer button::after,
     #getWaitlistContainer [type="submit"]::after {
       content: "Private early access — limited intake";
       display: block;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      margin-top: 10px;
-      color: #111111;
-      opacity: 0.65;
+      margin-top: 8px;
+      color: #111111 !important;
+      opacity: 1 !important;
       letter-spacing: 0.01em;
+      line-height: 1.3;
     }
 
     @media (max-width: 640px) {
