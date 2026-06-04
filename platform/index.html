@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uplift Register — Platform</title>
+  <meta
+    name="description"
+    content="Platform overview for Uplift Register: off-market development opportunity intelligence for London and the South East."
+  />
+  <style>
+    :root {
+      --bg: #f3f3f3;
+      --panel: #ffffff;
+      --panel-top: #f7f7f7;
+      --text: #111111;
+      --muted: #5e5e5e;
+      --rule: #dcdcdc;
+      --border: #e3e3e3;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.05);
+      --radius: 20px;
+      --max-width: 980px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      padding: 28px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .brand-top {
+      background: var(--panel-top);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 22px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .brand-lockup {
+      width: 100%;
+      max-width: 470px;
+      min-height: 180px;
+      background: #ffffff;
+      border: 1px solid #efefef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .brand-lockup img {
+      display: block;
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+    }
+
+    .content {
+      padding: 44px 36px 34px;
+    }
+
+    .hero {
+      text-align: center;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: 42px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0 auto 22px;
+      font-size: 22px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 18px;
+      margin: 0 0 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1.5px solid #111111;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.18s ease;
+    }
+
+    .btn-primary {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #2a2a2a;
+      border-color: #2a2a2a;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    .btn-secondary:hover {
+      background: #f6f6f6;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .trust-chip {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #3a3a3a;
+      background: #fbfbfb;
+    }
+
+    .section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.72;
+      color: #232323;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .panel-box {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 20px 18px;
+      background: #fbfbfb;
+    }
+
+    .panel-box h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .panel-box ul,
+    .section ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .panel-box li,
+    .section li {
+      margin: 0 0 10px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: #242424;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .process-step {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      background: #fbfbfb;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #111111;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .process-step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .process-step p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .ai-note {
+      margin-top: 18px;
+      border: 1px solid #111111;
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      background: #ffffff;
+    }
+
+    .ai-note strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .feature-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fbfbfb;
+    }
+
+    .feature-item h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .feature-item p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .preview-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fbfbfb;
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .preview-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .preview-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    .preview-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .meta-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .meta-key {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-value {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .preview-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .preview-row {
+      border-top: 1px solid var(--rule);
+      padding-top: 12px;
+    }
+
+    .preview-row strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .preview-row span {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #242424;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .cta-block {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px 24px 24px;
+      background: #fbfbfb;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .cta-block h2 {
+      margin-bottom: 12px;
+    }
+
+    .cta-block p {
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-line {
+      margin-top: 14px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .contact-line a {
+      color: #111111;
+      text-decoration: none;
+      border-bottom: 1px solid #bdbdbd;
+    }
+
+    .contact-line a:hover {
+      border-bottom-color: #111111;
+    }
+
+    .footer-nav {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+    }
+
+    .footer-nav a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .footer-nav a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 860px) {
+      h1 { font-size: 34px; }
+      .hero-copy { font-size: 20px; }
+      .trust-strip,
+      .two-col,
+      .process-grid,
+      .feature-grid,
+      .preview-meta { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      body { padding: 18px 12px; }
+      .content { padding: 28px 20px 24px; }
+      .brand-top { padding: 18px 14px; }
+      .brand-lockup { min-height: 118px; padding: 18px 16px; }
+      .brand-lockup img { max-width: 320px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 24px; }
+      p,
+      .panel-box li,
+      .section li { font-size: 16px; line-height: 1.7; }
+      .hero-copy { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+      <div class="brand-top">
+        <div class="brand-lockup">
+          <img src="data:image/webp;base64,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" alt="Uplift Register" />
+        </div>
+      </div>
+
+      <div class="content">
+        <section class="hero">
+          <p class="eyebrow">Private Development Intelligence</p>
+          <h1>Off-market development opportunity intelligence for London and the South East.</h1>
+          <p class="hero-copy">
+            Uplift Register surfaces, scores and explains development opportunities before they reach conventional market channels — giving serious operators a clearer way to identify, triage and act on evidence-backed signals.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/early-access/">Request Early Access</a>
+            <a class="btn btn-secondary" href="#methodology">How the intelligence works</a>
+          </div>
+
+          <div class="trust-strip">
+            <div class="trust-chip">Controlled access</div>
+            <div class="trust-chip">Evidence-backed signals</div>
+            <div class="trust-chip">Confidence visible</div>
+            <div class="trust-chip">Caveat-aware by design</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>What Uplift Register is</h2>
+          <p>
+            Uplift Register is a subscription-gated development opportunity intelligence platform. It is built to detect, qualify and explain property opportunities using planning, property, spatial, regulatory and market signals.
+          </p>
+          <p>
+            The platform is designed to give serious operators a structured way to review opportunity intelligence rather than rely on public listings, fragmented datasets or purely anecdotal sourcing. It provides an opportunity intelligence feed, Alpha Score and confidence indicators, evidence-backed decision dossiers, downloadable intelligence reports, saved presets and alerts for approved users across London and the South East.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Not a portal. Not a marketplace. Not a source of advice.</h2>
+          <p>
+            Uplift Register is not a property portal, not a public listing site, not an estate agency or brokerage, not a CRM, not a valuation engine, not a planning consultant and not a financial adviser.
+          </p>
+          <p>
+            It does not guarantee planning approval, profit, site availability, transaction success or commercial outcome. The platform is designed to provide intelligence inputs. Users remain responsible for independent verification, professional advice and commercial decision-making.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Built for serious operators</h2>
+
+          <div class="two-col">
+            <div class="panel-box">
+              <h3>Built for</h3>
+              <ul>
+                <li>Professional property developers</li>
+                <li>Land buyers</li>
+                <li>Small and mid-sized development operators</li>
+                <li>Planning-led investors</li>
+                <li>Capital-adjacent operators such as lenders, brokers and specialist advisers</li>
+              </ul>
+            </div>
+
+            <div class="panel-box">
+              <h3>Not built for</h3>
+              <ul>
+                <li>Speculative browsing</li>
+                <li>Consumer property search</li>
+                <li>Casual deal hunting</li>
+                <li>Retail investment certainty</li>
+                <li>Resale, scraping or reverse-engineering of opportunity data</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top: 18px;">
+            Uplift Register is deliberately narrow. It is designed for operators who understand that early opportunity intelligence is valuable only when it is evidence-backed, caveat-aware and acted on with professional judgement.
+          </p>
+        </section>
+
+        <section class="section" id="methodology">
+          <h2>How the intelligence process works</h2>
+          <p>
+            The platform is built to move from broad source material to a more structured decision surface. The process below is intentionally high-level. It is designed to explain the product without exposing proprietary logic, thresholds or scoring architecture.
+          </p>
+
+          <div class="process-grid">
+            <article class="process-step">
+              <div class="step-number">1</div>
+              <h3>Data sources</h3>
+              <p>Planning, property, spatial, regulatory, licensing, energy, market and other permitted sources where available.</p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-number">2</div>
+              <h3>Signal detection</h3>
+              <p>The platform identifies patterns, changes, mismatches or opportunity indicators that may justify further review.</p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-number">3</div>
+              <h3>Qualification gates</h3>
+              <p>Weak, incomplete or noisy signals are filtered before they reach users, helping preserve output quality.</p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-number">4</div>
+              <h3>Alpha Score</h3>
+              <p>A structured score helps rank relative opportunity strength and supports triage across the feed.</p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-number">5</div>
+              <h3>Confidence</h3>
+              <p>Confidence indicates the quality and reliability of the underlying evidence, not certainty of outcome.</p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-number">6</div>
+              <h3>Decision dossier</h3>
+              <p>Each surfaced opportunity is presented with thesis, evidence drivers, risks, caveats and suggested next checks.</p>
+            </article>
+
+            <article class="process-step">
+              <div class="step-number">7</div>
+              <h3>Alerts</h3>
+              <p>Users can receive notifications when relevant opportunities emerge against their saved presets and monitoring preferences.</p>
+            </article>
+          </div>
+
+          <div class="ai-note">
+            <strong>AI usage doctrine</strong>
+            <p class="muted" style="margin: 0;">
+              AI is used to help generate readable reports from structured evidence snapshots. It is not used to make scoring, qualification or publication decisions.
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>What subscribers receive</h2>
+          <p>
+            The product is designed to support disciplined opportunity review rather than generic browsing. Approved users receive a structured decision surface built around evidence, confidence and triage.
+          </p>
+
+          <div class="feature-grid">
+            <div class="feature-item">
+              <h3>Opportunity Intelligence Feed</h3>
+              <p>A prioritised feed of surfaced opportunities rather than a public listing library.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Alpha Score and confidence</h3>
+              <p>Structured indicators to help rank opportunity strength and evidence quality.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Why surfaced</h3>
+              <p>A clear explanation of the primary signal logic behind each opportunity.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Evidence drivers</h3>
+              <p>The main supporting factors that justify why the opportunity deserves review.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Risks &amp; caveats</h3>
+              <p>Visible constraints, uncertainty and reasons for caution rather than hidden ambiguity.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Decision dossier</h3>
+              <p>An evidence-backed view that supports triage, follow-up diligence and internal discussion.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Download Intelligence Report</h3>
+              <p>A readable export suitable for review, circulation or structured internal diligence.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Saved opportunities / monitoring</h3>
+              <p>Track surfaced opportunities that matter to your operating geography or strategy.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Alerts and saved presets</h3>
+              <p>Receive updates when relevant intelligence emerges against chosen criteria.</p>
+            </div>
+            <div class="feature-item">
+              <h3>Controlled London &amp; South East access</h3>
+              <p>Access focused on a defined regional intelligence universe rather than an unlimited public sprawl.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Example intelligence preview</h2>
+          <p>
+            Public previews are illustrative only. They show structure and decision logic without disclosing live opportunity locations.
+          </p>
+
+          <div class="preview-card">
+            <span class="preview-label">Illustrative structure only</span>
+            <h3>Anonymised Development Opportunity — London / South East</h3>
+
+            <div class="preview-meta">
+              <div class="meta-box">
+                <span class="meta-key">Alpha Score</span>
+                <span class="meta-value">84</span>
+              </div>
+              <div class="meta-box">
+                <span class="meta-key">Confidence</span>
+                <span class="meta-value">Medium–High</span>
+              </div>
+              <div class="meta-box">
+                <span class="meta-key">Opportunity Type</span>
+                <span class="meta-value">Planning Uplift / Infill Potential</span>
+              </div>
+            </div>
+
+            <div class="preview-list">
+              <div class="preview-row">
+                <strong>Why surfaced</strong>
+                <span>Multiple planning and spatial indicators suggest potential redevelopment pressure in a constrained micro-location.</span>
+              </div>
+
+              <div class="preview-row">
+                <strong>Evidence drivers</strong>
+                <span>Nearby approvals indicate local precedent. Site geometry suggests possible development optionality. Market liquidity supports exit review.</span>
+              </div>
+
+              <div class="preview-row">
+                <strong>Key caveat</strong>
+                <span>Planning constraints, site control and title position require independent verification before action.</span>
+              </div>
+
+              <div class="preview-row">
+                <strong>Output</strong>
+                <span>Decision dossier and downloadable Intelligence Report available to approved subscribers.</span>
+              </div>
+            </div>
+
+            <p class="note">
+              Public previews are anonymised and do not disclose live opportunity locations.
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Controlled subscription access</h2>
+          <p>
+            Uplift Register is subscription-based. Access is released in controlled phases to preserve signal quality, coverage discipline and platform reliability.
+          </p>
+          <p>
+            Pricing, billing interval and access terms are confirmed during the approval and subscription process. Approved users receive access to the opportunity feed, dossiers, reports, saved presets and alerts subject to their subscription status and the applicable terms.
+          </p>
+          <p>
+            This is not a brokerage model, not a commission model and not a success-fee service. Access is controlled as a product subscription, not as a sourcing mandate.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Caveat-aware by design</h2>
+          <p>
+            The strongest intelligence products do not hide uncertainty. Uplift Register surfaces confidence, caveats and risks so users can decide what deserves further diligence.
+          </p>
+          <ul>
+            <li>Public and third-party data can be incomplete, delayed, stale, inconsistent or wrong.</li>
+            <li>Confidence and caveats are part of the intelligence product, not an afterthought.</li>
+            <li>Users must independently verify before acting.</li>
+            <li>Professional advice should be taken where appropriate.</li>
+            <li>Opportunities may change, become unavailable or be superseded.</li>
+            <li>Scores are aids to triage, not guarantees.</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <div class="cta-block">
+            <h2>Request controlled early access</h2>
+            <p>
+              Access is released in phases to serious developers and aligned operators. If your work depends on finding development opportunities before they become obvious, request early access.
+            </p>
+            <div class="hero-actions" style="margin-bottom: 0;">
+              <a class="btn btn-primary" href="/early-access/">Request Early Access</a>
+            </div>
+            <p class="contact-line">
+              For general enquiries, contact <a href="mailto:hello@upliftregister.ai">hello@upliftregister.ai</a>.
+            </p>
+          </div>
+
+          <div class="footer-nav">
+            <a href="/early-access/">Early Access</a>
+            <a href="/platform/">Platform</a>
+            <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Use</a>
+            <a href="/subscription-terms/">Subscription Terms</a>
+            <a href="/cookies/">Cookie Policy</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
