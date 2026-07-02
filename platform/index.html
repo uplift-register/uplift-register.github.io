@@ -313,17 +313,16 @@
       color: var(--muted);
     }
 
-    .preview-card {
+    .proof-preview-card {
       border: 1px solid var(--border);
       border-radius: 18px;
       background: #fbfbfb;
-      padding: 22px;
-      margin-top: 18px;
+      padding: 24px;
+      margin-top: 20px;
     }
 
-    .preview-label {
-      display: inline-block;
-      margin-bottom: 10px;
+    .proof-preview-eyebrow {
+      margin: 0 0 10px;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.14em;
@@ -331,70 +330,89 @@
       color: var(--muted);
     }
 
-    .preview-card h3 {
-      margin: 0 0 16px;
-      font-size: 24px;
-      line-height: 1.25;
+    .proof-preview-card h3 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      line-height: 1.24;
+      letter-spacing: -0.02em;
     }
 
-    .preview-meta {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .meta-box {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px;
-      background: #ffffff;
-    }
-
-    .meta-key {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .meta-value {
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    .preview-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .preview-row {
-      border-top: 1px solid var(--rule);
-      padding-top: 12px;
-    }
-
-    .preview-row strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    .preview-row span {
-      font-size: 16px;
-      line-height: 1.65;
+    .proof-preview-intro {
+      margin: 0 0 14px;
       color: #242424;
     }
 
-    .note {
-      margin-top: 14px;
+    .proof-preview-image-wrap {
+      margin: 24px 0 12px;
+      padding: 14px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .proof-preview-image {
+      display: block;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #ffffff;
+    }
+
+    .proof-preview-caption {
+      margin: 12px 0 0;
       font-size: 14px;
       line-height: 1.6;
       color: var(--muted);
+      text-align: center;
+    }
+
+    .proof-preview-support {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .proof-preview-support h4 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .proof-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .proof-preview-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: #ffffff;
+    }
+
+    .proof-preview-item h5 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .proof-preview-item p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.62;
+      color: var(--muted);
+    }
+
+    .proof-preview-bridge {
+      margin: 18px 0 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #242424;
     }
 
     .cta-block {
@@ -459,7 +477,9 @@
       .two-col,
       .process-grid,
       .feature-grid,
-      .preview-meta { grid-template-columns: 1fr; }
+      .proof-preview-grid { grid-template-columns: 1fr; }
+
+      .proof-preview-card h3 { font-size: 24px; }
     }
 
     @media (max-width: 720px) {
@@ -474,6 +494,8 @@
       .panel-box li,
       .section li { font-size: 16px; line-height: 1.7; }
       .hero-copy { font-size: 18px; }
+      .proof-preview-card { padding: 20px; }
+      .proof-preview-image-wrap { padding: 10px; }
     }
   </style>
 </head>
@@ -621,6 +643,62 @@
           </div>
         </section>
 
+
+        <section class="section">
+          <p class="eyebrow">Anonymised intelligence preview</p>
+          <h2>Example intelligence preview</h2>
+          <p>
+            The preview below shows how Uplift Register presents an opportunity signal: detected area, signal stack, Alpha Score, confidence level, opportunity type, evidence drivers and key caveat.
+          </p>
+          <p>
+            Public previews are anonymised and do not disclose live opportunity locations. Full dossiers, live site details and downloadable intelligence reports are available only to approved subscribers.
+          </p>
+
+          <div class="proof-preview-card">
+            <div class="proof-preview-image-wrap">
+              <img
+                class="proof-preview-image"
+                src="/platform/retargeting%20DEAL%20SHEET%20.png"
+                alt="Anonymised Uplift Register intelligence preview showing an off-market development detection in South London with Alpha Score, confidence level, opportunity type, evidence drivers and key caveat."
+              />
+            </div>
+
+            <p class="proof-preview-caption">
+              Anonymised public preview. Full opportunity locations, decision dossiers and downloadable intelligence reports are available only to approved subscribers.
+            </p>
+
+            <div class="proof-preview-support">
+              <h4>What this preview demonstrates</h4>
+
+              <div class="proof-preview-grid">
+                <div class="proof-preview-item">
+                  <h5>Signal stack</h5>
+                  <p>Multiple planning, spatial and market indicators are consolidated into one reviewable opportunity signal.</p>
+                </div>
+
+                <div class="proof-preview-item">
+                  <h5>Score and confidence</h5>
+                  <p>Alpha Score and confidence are shown together so users can separate opportunity strength from evidence certainty.</p>
+                </div>
+
+                <div class="proof-preview-item">
+                  <h5>Evidence and caveat</h5>
+                  <p>The opportunity thesis is presented alongside the key caution, not separated from it.</p>
+                </div>
+
+                <div class="proof-preview-item">
+                  <h5>Subscriber-only detail</h5>
+                  <p>Live locations, full dossiers and downloadable reports remain gated for approved subscribers.</p>
+                </div>
+              </div>
+
+              <p class="proof-preview-bridge">
+                If this is the type of intelligence your team needs, request access and complete the qualification profile.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section class="section">
           <h2>What subscribers receive</h2>
           <p>
@@ -668,59 +746,6 @@
               <h3>Controlled London &amp; South East access</h3>
               <p>Access focused on a defined regional intelligence universe rather than an unlimited public sprawl.</p>
             </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2>Example intelligence preview</h2>
-          <p>
-            Public previews are illustrative only. They show structure and decision logic without disclosing live opportunity locations.
-          </p>
-
-          <div class="preview-card">
-            <span class="preview-label">Illustrative structure only</span>
-            <h3>Anonymised Development Opportunity — London / South East</h3>
-
-            <div class="preview-meta">
-              <div class="meta-box">
-                <span class="meta-key">Alpha Score</span>
-                <span class="meta-value">84</span>
-              </div>
-              <div class="meta-box">
-                <span class="meta-key">Confidence</span>
-                <span class="meta-value">Medium–High</span>
-              </div>
-              <div class="meta-box">
-                <span class="meta-key">Opportunity Type</span>
-                <span class="meta-value">Planning Uplift / Infill Potential</span>
-              </div>
-            </div>
-
-            <div class="preview-list">
-              <div class="preview-row">
-                <strong>Why surfaced</strong>
-                <span>Multiple planning and spatial indicators suggest potential redevelopment pressure in a constrained micro-location.</span>
-              </div>
-
-              <div class="preview-row">
-                <strong>Evidence drivers</strong>
-                <span>Nearby approvals indicate local precedent. Site geometry suggests possible development optionality. Market liquidity supports exit review.</span>
-              </div>
-
-              <div class="preview-row">
-                <strong>Key caveat</strong>
-                <span>Planning constraints, site control and title position require independent verification before action.</span>
-              </div>
-
-              <div class="preview-row">
-                <strong>Output</strong>
-                <span>Decision dossier and downloadable Intelligence Report available to approved subscribers.</span>
-              </div>
-            </div>
-
-            <p class="note">
-              Public previews are anonymised and do not disclose live opportunity locations.
-            </p>
           </div>
         </section>
 
